@@ -6,25 +6,27 @@ function generatePassword() {
 
   //Password criteria prompts
 
-    //Prompt for desired length -- use do/while to repeat prompt if invalid desired length is entered
+    //Prompt for desired length
+    //Use do/while to repeat prompt if invalid desired length is entered
     do {  
       var desiredLength = prompt("How many characters does your password need to be?");
         
-      //Validate that selection is between 8 & 128 characters
+      //Validate that entry is between 8 & 128 characters
       if (parseInt(desiredLength) < 8 || parseInt(desiredLength) > 128) {
         alert ("Password length must be between 8 and 128 characters. Please try again.");
       }
     } while (parseInt(desiredLength) < 8 || parseInt(desiredLength) > 128)
-    console.log(desiredLength);
+    console.log(desiredLength); //Remove before submitting assignment
     
     //Prompt for character types to include -- lowercase, uppercase, numeric, and/or special 
+    //Use do/while loop to repeat prompts if all are declined
     do {
       var includeLowercase = confirm ("Do you want to include lowercase letters?");
       var includeUppercase = confirm ("Do you want to include uppercase letters?");
       var includeNumbers = confirm ("Do you want to include numbers?");
       var includeSpecial = confirm ("Do you want to include special characters?");
         
-      //If all charTypes are declined, alert that at least one must be selected || should this block be within the else above? Or does it not matter?
+      //If all charTypes are declined, alert that at least one must be selected
       if (includeLowercase === false && includeUppercase === false && includeNumbers === false && includeSpecial === false) {
         alert ("At least one character type selection must be included. Please try again.");
       }
@@ -38,7 +40,7 @@ function generatePassword() {
     var special = "!@$-%#(^&*)<?_>+~";
 
   //Generate string of random characters from selected charTypes 
-  //Use do/while loop with each char selection to get a random char from that string on each pass and append it to a var until that var's length == desired length
+  //Use do/while loop with conditions on each charType to get a random char from the corresponding string and append it to a var until that var's length == desired length
 
     //Function for getting a random character from the charType definitions
     function getRandomChar(charType) {
@@ -53,19 +55,19 @@ function generatePassword() {
     do {
       if (includeLowercase === true && randomPass.length < parseInt(desiredLength)) {
         randomPass = randomPass + getRandomChar(lowercase);
-        console.log(randomPass);
+        console.log(randomPass); //Remove before submitting assignment
       }
       if (includeUppercase === true && randomPass.length < parseInt(desiredLength)) {
         randomPass = randomPass + getRandomChar(uppercase);
-        console.log(randomPass);
+        console.log(randomPass); //Remove before submitting assignment
       }
       if (includeNumbers === true && randomPass.length < parseInt(desiredLength)) {
         randomPass = randomPass + getRandomChar(numbers);
-        console.log(randomPass);
+        console.log(randomPass); //Remove before submitting assignment
       }
       if (includeSpecial === true && randomPass.length < parseInt(desiredLength)) {
         randomPass = randomPass + getRandomChar(special);
-        console.log(randomPass);
+        console.log(randomPass); //Remove before submitting assignment
       }
     }
     while (randomPass.length < parseInt(desiredLength)); 
