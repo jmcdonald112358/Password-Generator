@@ -21,7 +21,6 @@ function generatePassword() {
         return;
       }
     } while (parseInt(desiredLength) < 8 || parseInt(desiredLength) > 128);
-    console.log("Desired password length is: " + desiredLength); //Remove before submitting assignment
     
 
     //Prompt for character types to include -- lowercase, uppercase, numeric, and/or special 
@@ -34,25 +33,21 @@ function generatePassword() {
       var includeLowercase = confirm ("Do you want to include lowercase letters?");
         if (includeLowercase === true) {
           selectedChars.push("lowercase");
-          console.log(selectedChars);
         }
 
       var includeUppercase = confirm ("Do you want to include uppercase letters?");
         if (includeUppercase === true) {
           selectedChars.push("uppercase");
-          console.log(selectedChars);
         }
 
       var includeNumbers = confirm ("Do you want to include numbers?");
         if (includeNumbers === true) {
           selectedChars.push("numbers");
-          console.log(selectedChars);
         }
 
       var includeSpecial = confirm ("Do you want to include special characters?");
         if (includeSpecial === true) {
           selectedChars.push("special");
-          console.log(selectedChars);
         }
 
       //If all charTypes are declined, alert that at least one must be selected
@@ -79,7 +74,6 @@ function generatePassword() {
     //Function for randomizing which of the selected charTypes should be used for the next character in the password
     function getNextCharType() {
       let nextCharTypeIndex = Math.floor(Math.random() * selectedChars.length)
-      console.log("The next selected charType index is " + nextCharTypeIndex); //Remove before submitting assignment
       return selectedChars[nextCharTypeIndex];
     }
 
@@ -96,43 +90,34 @@ function generatePassword() {
     do {
       //Determine next charType to pull from
       var nextCharType = getNextCharType();
-      console.log("The next character should be from the " + nextCharType + " string"); //Remove before submitting assignment
 
       //Get next character by determining what the next randomized selected charType is and append character from that charType to the string
       if (nextCharType === "lowercase" && randomPass.length < parseInt(desiredLength)) {
         randomPass += getRandomChar(lowercase);
-        console.log(randomPass); //Remove before submitting assignment
       }
       if (nextCharType === "uppercase" && randomPass.length < parseInt(desiredLength)) {
         randomPass += getRandomChar(uppercase);
-        console.log(randomPass); //Remove before submitting assignment
       }
       if (nextCharType === "numbers" && randomPass.length < parseInt(desiredLength)) {
         randomPass += getRandomChar(numbers);
-        console.log(randomPass); //Remove before submitting assignment
       }
       if (nextCharType === "special" && randomPass.length < parseInt(desiredLength)) {
         randomPass += getRandomChar(special);
-        console.log(randomPass); //Remove before submitting assignment
       }
 
-      //Version of character getter to ensure at least one character from each selectedType gets included 
+      //Version of character getter that ensures at least one character from each selectedType gets included 
       //Use without nextCharType and getNextCharType
         // if (includeLowercase === true && randomPass.length < parseInt(desiredLength)) {
         //   randomPass += getRandomChar(lowercase);
-        //   console.log(randomPass); //Remove before submitting assignment
         // }
         // if (includeUppercase === true && randomPass.length < parseInt(desiredLength)) {
         //   randomPass += getRandomChar(uppercase);
-        //   console.log(randomPass); //Remove before submitting assignment
         // }
         // if (includeNumbers === true && randomPass.length < parseInt(desiredLength)) {
         //   randomPass += getRandomChar(numbers);
-        //   console.log(randomPass); //Remove before submitting assignment
         // }
         // if (includeSpecial === true && randomPass.length < parseInt(desiredLength)) {
         //   randomPass += getRandomChar(special);
-        //   console.log(randomPass); //Remove before submitting assignment
         // }
     }
     while (randomPass.length < parseInt(desiredLength)); 
@@ -152,4 +137,3 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
